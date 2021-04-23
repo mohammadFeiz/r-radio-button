@@ -10,7 +10,7 @@ export default class RRadioButton extends Component {
     }
   }
   render(){
-    var {id,className,style,margin = 6,items,value,type = 'horizontal',color = 'orange',size = 20,space = 12,onChange,rtl} = this.props;
+    var {id,className,style,margin = 6,items,value,type = 'horizontal',color,size = 20,space = 12,onChange,rtl} = this.props;
     return (
       <div 
         className={'r-radio-button' + (type === 'vertical'?' vertical':' horizontal') + (rtl?' rtl':'') + (className?' ' + className:'')} 

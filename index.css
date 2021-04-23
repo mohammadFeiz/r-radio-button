@@ -24,7 +24,9 @@
   display:flex;
   align-items: center;
   justify-content: center;
+  color:orange;
 }
 .r-radio-button-icon div{
   border-radius:100%;
+  background:orange;
 }

@@ -1,0 +1,30 @@
+.r-radio-button{
+  display:flex;
+  border:1px solid #eee;
+}
+.r-radio-button.rtl{
+  direction:rtl;
+}
+.r-radio-button.horizontal{
+  justify-content: center;
+  height:36px;
+}
+.r-radio-button.vertical{
+  flex-direction:column;
+  padding:12px;
+}
+.r-radio-button-item{
+  display:flex;
+  align-items: center;
+  cursor:pointer;
+}
+.r-radio-button-icon{
+  border:2px solid;
+  border-radius:100%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.r-radio-button-icon div{
+  border-radius:100%;
+}

@@ -10,7 +10,7 @@ export default class RRadioButton extends Component {
     }
   }
   render(){
-    var {id,className,style,margin = 6,items,value,type = 'vertical',color = 'orange',size = 20,space = 12,onChange,rtl} = this.props;
+    var {id,className,style,margin = 6,items,value,type = 'horizontal',color = 'orange',size = 20,space = 12,onChange,rtl} = this.props;
     return (
       <div 
         className={'r-radio-button' + (type === 'vertical'?' vertical':' horizontal') + (rtl?' rtl':'') + (className?' ' + className:'')} 
@@ -21,7 +21,7 @@ export default class RRadioButton extends Component {
           items.map((item,i)=>{
             let active = item.value === value;
             return (
-              <Fragment>
+              <Fragment key={i}>
                 <div className='r-radio-button-item' onClick={()=>onChange(item.value)}>
                   <div className='r-radio-button-icon' style={{color,width:size,height:size}}>
                     {active && <div style={{background:color,width:size - 4,height:size - 4}}></div>}

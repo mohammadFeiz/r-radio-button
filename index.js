@@ -75,7 +75,7 @@ var RRadioButton = /*#__PURE__*/function (_Component) {
           items = _this$props.items,
           value = _this$props.value,
           _this$props$type = _this$props.type,
-          type = _this$props$type === void 0 ? 'vertical' : _this$props$type,
+          type = _this$props$type === void 0 ? 'horizontal' : _this$props$type,
           _this$props$color = _this$props.color,
           color = _this$props$color === void 0 ? 'orange' : _this$props$color,
           _this$props$size = _this$props.size,
@@ -90,7 +90,9 @@ var RRadioButton = /*#__PURE__*/function (_Component) {
         id: id
       }, items.map(function (item, i) {
         var active = item.value === value;
-        return /*#__PURE__*/_react.default.createElement(_react.Fragment, null, /*#__PURE__*/_react.default.createElement("div", {
+        return /*#__PURE__*/_react.default.createElement(_react.Fragment, {
+          key: i
+        }, /*#__PURE__*/_react.default.createElement("div", {
           className: "r-radio-button-item",
           onClick: function onClick() {
             return onChange(item.value);

@@ -1,32 +1,58 @@
 .r-radio-button{
   display:flex;
-  border:1px solid #eee;
+  border:1px solid #ddd;
+  color:#666;
+  justify-content: flex-start;
+  padding:6px;
+  flex-wrap: wrap;
 }
 .r-radio-button.rtl{
   direction:rtl;
-}
-.r-radio-button.horizontal{
-  justify-content: center;
-  height:36px;
-}
-.r-radio-button.vertical{
-  flex-direction:column;
-  padding:12px;
 }
 .r-radio-button-item{
   display:flex;
   align-items: center;
   cursor:pointer;
+  padding:6px;
+}
+.r-radio-button-text{
+  flex:1;
 }
 .r-radio-button-icon{
   border:2px solid;
+  color:orange;
   border-radius:100%;
   display:flex;
   align-items: center;
   justify-content: center;
-  color:orange;
+  position:relative;
 }
-.r-radio-button-icon div{
+.r-radio-button-icon-inner{
   border-radius:100%;
   background:orange;
+  transition:.2s;
+  width:0;
+  height:0;
+  opacity:0;
+}
+.r-radio-button-icon.active .r-radio-button-icon-inner{
+  border-radius:100%;
+  background:orange;
+  width:calc(100% - 4px);
+  height:calc(100% - 4px);
+  opacity:1;
+  transition:.2s;
+}
+.r-radio-button-badge{
+  width:0px;
+  height:0px;
+  top:-12px;
+  position: absolute;
+  color:#666;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+.r-radio-button-badge div{
+  flex:1;
 }

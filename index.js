@@ -17,8 +17,6 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function _classCallCheck(instance, Constructor) { if (!_instanceof(instance, Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -44,82 +42,134 @@ var RRadioButton = /*#__PURE__*/function (_Component) {
 
   var _super = _createSuper(RRadioButton);
 
-  function RRadioButton(props) {
-    var _this;
-
+  function RRadioButton() {
     _classCallCheck(this, RRadioButton);
 
-    _this = _super.call(this, props);
-    _this.state = {
-      items: [{
-        text: 'mohammad',
-        value: 'm'
-      }, {
-        text: 'abbas',
-        value: 'a'
-      }],
-      value: 'a'
-    };
-    return _this;
+    return _super.apply(this, arguments);
   }
 
   _createClass(RRadioButton, [{
+    key: "getStyle",
+    value: function getStyle() {
+      var _this$props = this.props,
+          justify = _this$props.justify,
+          _this$props$style = _this$props.style,
+          style = _this$props$style === void 0 ? {} : _this$props$style;
+      var Style = {};
+
+      if (justify) {
+        Style.justifyContent = justify;
+      }
+
+      return { ...Style,
+        ...style
+      };
+    }
+  }, {
+    key: "getItemStyle",
+    value: function getItemStyle() {
+      var style = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var _this$props2 = this.props,
+          _this$props2$inline = _this$props2.inline,
+          inline = _this$props2$inline === void 0 ? true : _this$props2$inline,
+          _this$props2$itemStyl = _this$props2.itemStyle,
+          itemStyle = _this$props2$itemStyl === void 0 ? {} : _this$props2$itemStyl;
+      return {
+        width: inline ? 'fit-content' : '100%',
+        ...itemStyle,
+        ...style
+      };
+    }
+  }, {
+    key: "getOuterIconStyle",
+    value: function getOuterIconStyle(color) {
+      var _this$props3 = this.props,
+          _this$props3$size = _this$props3.size,
+          size = _this$props3$size === void 0 ? 16 : _this$props3$size,
+          round = _this$props3.round;
+      var style = {
+        color: color,
+        width: size,
+        height: size
+      };
+
+      if (round === false) {
+        style.borderRadius = 0;
+      }
+
+      return style;
+    }
+  }, {
+    key: "getInnerIconStyle",
+    value: function getInnerIconStyle(active, color) {
+      var _this$props4 = this.props,
+          gap = _this$props4.gap,
+          round = _this$props4.round;
+      var style = {
+        background: color
+      };
+
+      if (gap !== undefined && active) {
+        style.width = "calc(100% - ".concat(gap * 2, "px)");
+        style.height = "calc(100% - ".concat(gap * 2, "px)");
+      }
+
+      if (round === false) {
+        style.borderRadius = 0;
+      }
+
+      return style;
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          id = _this$props.id,
-          className = _this$props.className,
-          style = _this$props.style,
-          _this$props$margin = _this$props.margin,
-          margin = _this$props$margin === void 0 ? 6 : _this$props$margin,
-          items = _this$props.items,
-          value = _this$props.value,
-          _this$props$type = _this$props.type,
-          type = _this$props$type === void 0 ? 'horizontal' : _this$props$type,
-          color = _this$props.color,
-          _this$props$size = _this$props.size,
-          size = _this$props$size === void 0 ? 20 : _this$props$size,
-          _this$props$space = _this$props.space,
-          space = _this$props$space === void 0 ? 12 : _this$props$space,
-          onChange = _this$props.onChange,
-          rtl = _this$props.rtl;
+      var _this = this;
+
+      var _this$props5 = this.props,
+          id = _this$props5.id,
+          className = _this$props5.className,
+          _this$props5$margin = _this$props5.margin,
+          margin = _this$props5$margin === void 0 ? 6 : _this$props5$margin,
+          items = _this$props5.items,
+          _this$props5$value = _this$props5.value,
+          value = _this$props5$value === void 0 ? true : _this$props5$value,
+          onChange = _this$props5.onChange,
+          rtl = _this$props5.rtl;
       return /*#__PURE__*/_react.default.createElement("div", {
-        className: 'r-radio-button' + (type === 'vertical' ? ' vertical' : ' horizontal') + (rtl ? ' rtl' : '') + (className ? ' ' + className : ''),
-        style: style,
+        className: 'r-radio-button' + (rtl ? ' rtl' : '') + (className ? ' ' + className : ''),
+        style: this.getStyle(),
         id: id
       }, items.map(function (item, i) {
-        var active = item.value === value;
+        var active = item.value === value ? ' active' : '';
+        var color = item.color || _this.props.color;
         return /*#__PURE__*/_react.default.createElement(_react.Fragment, {
           key: i
         }, /*#__PURE__*/_react.default.createElement("div", {
-          className: "r-radio-button-item",
+          className: 'r-radio-button-item' + active,
+          title: item.title,
           onClick: function onClick() {
-            return onChange(item.value);
-          }
+            return onChange(item.value, i);
+          },
+          style: _this.getItemStyle(item.style)
         }, /*#__PURE__*/_react.default.createElement("div", {
-          className: "r-radio-button-icon",
-          style: {
-            color: color,
-            width: size,
-            height: size
-          }
-        }, active && /*#__PURE__*/_react.default.createElement("div", {
-          style: {
-            background: color,
-            width: size - 4,
-            height: size - 4
-          }
+          className: 'r-radio-button-icon' + active,
+          style: _this.getOuterIconStyle(color)
+        }, item.badge && /*#__PURE__*/_react.default.createElement("div", {
+          className: "r-radio-button-badge"
+        }, /*#__PURE__*/_react.default.createElement("div", null, item.badge)), /*#__PURE__*/_react.default.createElement("div", {
+          className: "r-radio-button-icon-inner",
+          style: _this.getInnerIconStyle(active, color)
         })), /*#__PURE__*/_react.default.createElement("div", {
           className: "r-radio-button-margin",
           style: {
             width: margin
           }
         }), /*#__PURE__*/_react.default.createElement("div", {
-          className: "r-radio-button-text"
-        }, item.text)), i < items.length - 1 && /*#__PURE__*/_react.default.createElement("div", {
-          className: "r-radio-button-space",
-          style: _defineProperty({}, type === 'horizontal' ? 'width' : 'height', space)
-        }));
+          className: "r-radio-button-text",
+          style: {
+            color: item.color
+          }
+        }, item.text)));
       }));
     }
   }]);
